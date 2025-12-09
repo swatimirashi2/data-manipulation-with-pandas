@@ -19,7 +19,7 @@ df.sample(5)             # random sample rows
 df.isna()                # missing values as True/False
 df.isna().sum()          # missing count per column
 
-----
+---
 
 Data Type Handling:
 
