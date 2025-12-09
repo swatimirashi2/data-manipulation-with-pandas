@@ -19,6 +19,21 @@ df.sample(5)             # random sample rows
 df.isna()                # missing values as True/False
 df.isna().sum()          # missing count per column
 
+----
+
+Data Type Handling:
+
+# To Check all column dtypes
+df.dtypes
+
+# To Check dtype of a single column
+df['col'].dtype
+
+# Type Conversions 
+# df['col'] = df['col'].astype(datatype)   # int, float, str, bool, 'category'
+
+# Convert to datetime
+df['col'] = pd.to_datetime(df['col'])
 
 ---
 
