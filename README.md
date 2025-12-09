@@ -81,7 +81,7 @@ df['col'].fillna(df['col'].mean(), inplace=True)
 df['col'].fillna(df['col'].median(), inplace=True)
 df['col'].fillna(df['col'].mode()[0], inplace=True)
 
-df['col'] = df.groupby('group')['col'].transform(lambda x: x.fillna(x.mean()))
+df['col'].fillna(df.groupby('group')['col'].transform('mean'), inplace=True)
 
 df['col'].fillna(method='ffill', inplace=True)  # forward fill
 df['col'].fillna(method='bfill', inplace=True)  # backward fill
