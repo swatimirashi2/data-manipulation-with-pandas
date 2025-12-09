@@ -1,4 +1,4 @@
-# 📌 Complete Pandas Reference – Interview Preparation Guide
+# 📌 Pandas for Data Analysis
 
 This document is a complete, easy-to-use reference for all essential **Pandas functions**, covering data inspection, cleaning, transformation, grouping, merging, and advanced operations.  
 Useful for **coding interviews, take-home assignments, and real-world data analysis tasks**.
