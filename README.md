@@ -37,6 +37,18 @@ df['col'] = pd.to_datetime(df['col'])
 
 ---
 
+# Handling Duplicates:
+
+df.duplicated()  # Find duplicate rows
+df.duplicated().sum()  # Count duplicate rows
+df[df.duplicated()]  # Display only duplicate rows
+df = df.drop_duplicates() # Drop duplicates (keep first)
+df = df.drop_duplicates(keep='last') # Drop duplicates (keep last)
+df = df.drop_duplicates(subset=['col1', 'col2']) # Drop duplicates based on specific columns
+df['is_dup'] = df.duplicated() # Mark duplicates
+
+---
+
 2️⃣ Selecting Data
 
 df['col']                        # select single column (Series)
