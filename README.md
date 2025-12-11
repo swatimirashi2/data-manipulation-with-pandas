@@ -1,6 +1,6 @@
-📘 Data Manipulation With Pandas 
+📘 Pandas:
 
-Perfect for daily revision, exams, coding rounds, projects, and real data analysis.
+Perfect for daily revision, coding rounds, projects, and real data analysis.
 
 
 ---
@@ -8,7 +8,6 @@ Perfect for daily revision, exams, coding rounds, projects, and real data analys
 1️⃣ Importing & Loading Data
 
 import pandas as pd
-
 df = pd.read_csv('file.csv')
 df = pd.read_excel('file.xlsx')
 df = pd.read_json('file.json')
@@ -63,7 +62,7 @@ df.loc[100]
 df.loc[df['age'] > 25]
 df.loc[(df['age'] > 25) & (df['city']=='Pune')]
 
-Unique & Counts
+Unique Values
 
 df['col'].unique()
 df['col'].nunique()
@@ -75,12 +74,12 @@ df['col'].value_counts(normalize=True)
 
 5️⃣ Filtering Techniques
 
-Comparison
+Comparison Filters
 
 df[df['col'] > 10]
 df[(df['age'] > 25) & (df['salary'] < 40000)]
 
-String filters
+String Filters
 
 df['name'].str.startswith('A')
 df['name'].str.endswith('h')
@@ -117,12 +116,12 @@ df['col'].fillna(df['col'].mean())
 df['col'].fillna(df['col'].median())
 df['col'].fillna(df['col'].mode()[0])
 
-Forward / Backward fill
+Forward / Backward Fill
 
 df.fillna(method='ffill')
 df.fillna(method='bfill')
 
-Group-wise fill
+Group-wise Fill
 
 df['val'] = df.groupby('city')['val'].transform(lambda x: x.fillna(x.mean()))
 
@@ -147,7 +146,7 @@ Create
 df['new'] = df['a'] + df['b']
 df['price_total'] = df['qty'] * df['price']
 
-Update with condition
+Update With Condition
 
 df.loc[df['age'] > 50, 'group'] = 'Senior'
 df.loc[df['score'] < 40, 'grade'] = 'Fail'
@@ -185,6 +184,7 @@ df.nlargest(5, 'score')
 df.nsmallest(5, 'score')
 
 df['rank'] = df['score'].rank(ascending=False)
+
 df.loc[df['score'].idxmax()]
 df.loc[df['score'].idxmin()]
 
@@ -193,11 +193,11 @@ df.loc[df['score'].idxmin()]
 
 1️⃣1️⃣ GroupBy & Aggregations
 
-Single column
+Single Aggregation
 
 df.groupby('region')['sales'].sum()
 
-Multiple aggregations
+Multiple Aggregations
 
 df.groupby('city').agg({
     'sales':'sum',
@@ -205,11 +205,11 @@ df.groupby('city').agg({
     'qty':'count'
 })
 
-Group max record
+Group-wise Maximum Row
 
 df.loc[df.groupby('city')['sales'].idxmax()]
 
-Cumulative operations
+Cumulative
 
 df['cum_sum'] = df['sales'].cumsum()
 df['cum_mean'] = df['sales'].expanding().mean()
@@ -232,7 +232,9 @@ pd.pivot_table(
 
 ---
 
-1️⃣3️⃣ Merging / Joining DataFrames
+1️⃣3️⃣ Merging / Joining
+
+Merge
 
 df1.merge(df2, on='id', how='inner')
 df1.merge(df2, how='left', on='id')
@@ -255,7 +257,7 @@ df['full'] = df.apply(
     lambda r: r['first'] + " " + r['last'], axis=1
 )
 
-df.applymap(lambda x: x*2)     # element-wise on DataFrame
+df.applymap(lambda x: x*2)     # element-wise
 
 
 ---
@@ -301,7 +303,7 @@ Q1 = df['salary'].quantile(0.25)
 Q3 = df['salary'].quantile(0.75)
 IQR = Q3 - Q1
 
-outliers = df[(df['salary'] < Q1 - 1.5*IQR) | 
+outliers = df[(df['salary'] < Q1 - 1.5*IQR) |
               (df['salary'] > Q3 + 1.5*IQR)]
 
 
@@ -350,7 +352,7 @@ df.reset_index()
 
 ---
 
-2️⃣4️⃣ String Cleaning (Real datasets)
+2️⃣4️⃣ String Cleaning (Real Datasets)
 
 df['name'] = df['name'].str.strip()
 df['name'] = df['name'].str.replace('[^A-Za-z ]','', regex=True)
@@ -363,5 +365,3 @@ df['email_domain'] = df['email'].str.split('@').str[1]
 2️⃣5️⃣ JSON Handling
 
 df = pd.json_normalize(json_data)
-
-
